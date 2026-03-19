@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PARTNER MATCH — Find a hitting partner in 60 seconds</title>
+<meta name="description" content="NYC tennis. Find a hitting partner in 60 seconds. All boroughs. All levels. Free. No app to download.">
+<meta property="og:title" content="PARTNER MATCH">
+<meta property="og:description" content="Find a hitting partner in 60 seconds. NYC tennis. Free.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://partnermatch.io">
+<link rel="icon" type="image/png" href="favicon.png">
+<style>
+  @font-face {
+    font-family: 'Square721';
+    src: url('square721-bold-ext.otf') format('opentype');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --green: #00ff00;
+    --cyan: #00ffff;
+    --magenta: #ff00ff;
+    --yellow: #ffff00;
+    --black: #000000;
+    --white: #ffffff;
+    --gray: #888888;
+    --dark-gray: #333333;
+  }
+
+  html { height: 100%; }
+
+  body {
+    background: var(--black);
+    color: var(--white);
+    font-family: 'Square721', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 48px 24px;
+    text-align: center;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .container {
+    max-width: 480px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+  }
+
+  /* ── Logo ── */
+  .logo {
+    max-width: 280px;
+    width: 75%;
+    height: auto;
+    margin-bottom: 48px;
+    opacity: 0;
+    animation: fadeUp 0.6s ease-out 0.1s forwards;
+  }
+
+  /* ── Headline ── */
+  .headline {
+    font-size: clamp(26px, 7.5vw, 40px);
+    font-weight: 700;
+    line-height: 1.15;
+    color: var(--green);
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    opacity: 0;
+    animation: fadeUp 0.6s ease-out 0.25s forwards;
+  }
+
+  /* ── Subline ── */
+  .subline {
+    font-size: clamp(13px, 3.5vw, 16px);
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1.6;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    opacity: 0;
+    animation: fadeUp 0.6s ease-out 0.4s forwards;
+  }
+
+  /* ── Small text ── */
+  .small {
+    font-size: clamp(11px, 2.8vw, 13px);
+    font-weight: 700;
+    color: var(--gray);
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    margin-bottom: 40px;
+    opacity: 0;
+    animation: fadeUp 0.6s ease-out 0.5s forwards;
+  }
+
+  /* ── CTA Button ── */
+  .cta {
+    display: inline-block;
+    padding: 16px 40px;
+    background: var(--green);
+    color: var(--black);
+    font-family: 'Square721', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: clamp(14px, 3.5vw, 16px);
+    font-weight: 700;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    border-radius: 2px;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+    opacity: 0;
+    animation: fadeUp 0.6s ease-out 0.65s forwards;
+  }
+
+  .cta:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 24px rgba(0, 255, 0, 0.3);
+  }
+
+  .cta:active {
+    transform: translateY(0);
+    box-shadow: none;
+  }
+
+  /* ── Footer ── */
+  .footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 16px;
+    text-align: center;
+    font-size: 10px;
+    color: var(--dark-gray);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  @media (max-height: 580px) {
+    .footer {
+      position: relative;
+      margin-top: 48px;
+    }
+  }
+
+  /* ── Animations ── */
+  @keyframes fadeUp {
+    from {
+      opacity: 0;
+      transform: translateY(16px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .logo, .headline, .subline, .small, .cta {
+      animation: none;
+      opacity: 1;
+    }
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- LOGO: Replace src with your green logo PNG filename -->
+  <img
+    src="logo-green.png"
+    alt="PARTNER MATCH"
+    class="logo"
+  >
+
+  <h1 class="headline">
+    Find a hitting partner<br>in 60 seconds.
+  </h1>
+
+  <p class="subline">
+    NYC tennis. All boroughs. All levels. Free.
+  </p>
+
+  <p class="small">
+    No app to download. Just Slack.
+  </p>
+
+  <!-- CTA: Replace href with Slack invite URL when ready -->
+  <a href="#" class="cta">
+    Coming Soon
+  </a>
+
+</div>
+
+<div class="footer">
+  Partner Match — NYC 2026
+</div>
+
+</body>
+</html>
