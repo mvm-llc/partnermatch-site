@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PARTNER MATCH — Find a hitting partner in 60 seconds</title>
+<title>PARTNER MATCH — Hitting a wall? Find a partner.</title>
 <meta name="description" content="NYC tennis. Find a hitting partner in 60 seconds. All boroughs. All levels. Free. No app to download.">
 <meta property="og:title" content="PARTNER MATCH">
-<meta property="og:description" content="Find a hitting partner in 60 seconds. NYC tennis. Free.">
+<meta property="og:description" content="Hitting a wall? Find a partner. NYC tennis. Free.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://partnermatch.io">
 <link rel="icon" type="image/png" href="favicon.png">
@@ -22,76 +22,89 @@
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
   body {
-    background: #000;
-    color: #fff;
+    background: #fff;
+    color: #000;
     font-family: 'Square721', 'Helvetica Neue', Helvetica, Arial, sans-serif;
     font-weight: 700;
     min-height: 100dvh;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    flex-direction: column;
     -webkit-font-smoothing: antialiased;
   }
 
   .page {
     width: 100%;
-    max-width: 600px;
-    padding: 10dvh 6vw;
-    text-align: center;
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 6vh 6vw;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    flex: 1;
   }
 
-  .logo {
-    width: 66%;
-    max-width: 320px;
+  /* ── Logo stack — left aligned ── */
+  .logo-stack {
+    width: clamp(160px, 40vw, 280px);
     height: auto;
-    margin-bottom: 7vh;
+    margin-bottom: 8vh;
     opacity: 0;
     animation: up .5s ease .1s forwards;
   }
 
+  /* ── Main content — centered ── */
+  .content {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+    justify-content: center;
+  }
+
   h1 {
-    font-size: clamp(24px, 9vw, 48px);
-    line-height: 1.1;
+    font-size: clamp(28px, 9vw, 56px);
+    line-height: 1.05;
     letter-spacing: 0.01em;
     text-transform: uppercase;
-    color: #00ff00;
-    margin-bottom: clamp(16px, 3vh, 28px);
+    color: #000;
+    margin-bottom: clamp(20px, 4vh, 36px);
     opacity: 0;
     animation: up .5s ease .2s forwards;
   }
 
+  h1 .green {
+    color: #00ff00;
+  }
+
   .sub {
-    font-size: clamp(11px, 3.2vw, 17px);
+    font-size: clamp(13px, 3.5vw, 20px);
     line-height: 1.5;
-    letter-spacing: 0.04em;
+    letter-spacing: 0.03em;
     text-transform: uppercase;
-    color: #fff;
-    margin-bottom: clamp(4px, 1vh, 8px);
+    color: #000;
+    margin-bottom: clamp(6px, 1.5vh, 12px);
     opacity: 0;
     animation: up .5s ease .3s forwards;
   }
 
   .small {
-    font-size: clamp(9px, 2.4vw, 13px);
+    font-size: clamp(10px, 2.5vw, 14px);
     letter-spacing: 0.04em;
     text-transform: uppercase;
-    color: #666;
-    margin-bottom: clamp(24px, 5vh, 40px);
+    color: #aaa;
+    margin-bottom: clamp(28px, 5vh, 48px);
     opacity: 0;
     animation: up .5s ease .4s forwards;
   }
 
   .cta {
     display: inline-block;
-    padding: clamp(12px, 2.5vh, 18px) clamp(28px, 8vw, 48px);
+    padding: clamp(14px, 3vh, 20px) clamp(32px, 10vw, 56px);
     background: #00ff00;
     color: #000;
     font-family: inherit;
     font-weight: 700;
-    font-size: clamp(12px, 3vw, 16px);
+    font-size: clamp(13px, 3.2vw, 18px);
     letter-spacing: 0.04em;
     text-transform: uppercase;
     text-decoration: none;
@@ -102,39 +115,49 @@
     opacity: 0;
     animation: up .5s ease .5s forwards;
   }
-  .cta:hover { transform: translateY(-2px); box-shadow: 0 0 20px rgba(0,255,0,.25); }
+  .cta:hover { transform: translateY(-2px); box-shadow: 0 4px 20px rgba(0,255,0,.3); }
   .cta:active { transform: translateY(0); box-shadow: none; }
 
+  /* ── Footer ── */
   .foot {
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    padding: 14px;
+    padding: clamp(16px, 3vh, 24px) 6vw;
     text-align: center;
-    font-size: clamp(8px, 1.8vw, 10px);
+    font-size: clamp(9px, 2vw, 11px);
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: #2a2a2a;
   }
-  @media (max-height: 600px) { .foot { position: relative; margin-top: 6vh; } }
+  .foot .cyan { color: #00ffff; }
+  .foot .yellow { color: #ffff00; }
+  .foot .magenta { color: #ff00ff; }
 
   @keyframes up {
     from { opacity: 0; transform: translateY(12px); }
     to { opacity: 1; transform: translateY(0); }
   }
   @media (prefers-reduced-motion: reduce) {
-    .logo, h1, .sub, .small, .cta { animation: none; opacity: 1; }
+    .logo-stack, h1, .sub, .small, .cta { animation: none; opacity: 1; }
   }
 </style>
 </head>
 <body>
+
 <div class="page">
-  <img src="logo-green.svg" alt="PARTNER MATCH" class="logo">
-  <h1>Find a hitting<br>partner in 60<br>seconds.</h1>
-  <p class="sub">NYC tennis. All boroughs.<br>All levels. Free.</p>
-  <p class="small">No app to download. Just Slack.</p>
-  <a href="https://join.slack.com/t/partnermatch/shared_invite/zt-3s50e7zr9-FHEx_kJtc7tah6_RwrHNpQ" class="cta">Join the Community</a>
+  <!-- Logo stack: all 5 colors, left-aligned -->
+  <img src="logo-stack.png" alt="PARTNER MATCH" class="logo-stack">
+
+  <div class="content">
+    <h1>Hitting a wall?<br><span class="green">Find a partner.</span></h1>
+    <p class="sub">NYC tennis. All boroughs.<br>All levels. Free.</p>
+    <p class="small">No app to download. Just Slack.</p>
+    <a href="#" class="cta">Join the community</a>
+  </div>
 </div>
-<div class="foot">Partner Match — NYC 2026</div>
+
+<div class="foot">
+  <span class="cyan">Partner Match</span>
+  <span class="yellow"> — </span>
+  <span class="magenta">NYC 2026</span>
+</div>
+
 </body>
 </html>
