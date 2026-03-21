@@ -118,6 +118,20 @@
   .cta:hover { transform: translateY(-2px); box-shadow: 0 4px 20px rgba(0,255,0,.3); }
   .cta:active { transform: translateY(0); box-shadow: none; }
 
+  .guidelines-link {
+    display: inline-block;
+    margin-top: clamp(16px, 3vh, 24px);
+    font-size: clamp(10px, 2.4vw, 12px);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: #bbb;
+    transition: color .15s ease;
+    opacity: 0;
+    animation: up .5s ease .6s forwards;
+  }
+  .guidelines-link:hover { color: #888; }
+
   /* ── Footer ── */
   .foot {
     padding: clamp(16px, 3vh, 24px) 6vw;
@@ -135,7 +149,7 @@
     to { opacity: 1; transform: translateY(0); }
   }
   @media (prefers-reduced-motion: reduce) {
-    .logo-stack, h1, .sub, .small, .cta { animation: none; opacity: 1; }
+    .logo-stack, h1, .sub, .small, .cta, .guidelines-link { animation: none; opacity: 1; }
   }
 </style>
 </head>
@@ -149,7 +163,8 @@
     <h1>Hitting a wall?<br><span class="green">Find a partner.</span></h1>
     <p class="sub">NYC tennis. All boroughs.<br>All levels. Free.</p>
     <p class="small">No app to download. Just Slack.</p>
-    <a href="https://join.slack.com/t/partnermatch/shared_invite/zt-3s50e7zr9-FHEx_kJtc7tah6_RwrHNpQ" class="cta">Join the community</a>
+    <a href="#" class="cta">Join the community</a>
+    <a href="/guidelines" class="guidelines-link">Community Guidelines</a>
   </div>
 </div>
 
