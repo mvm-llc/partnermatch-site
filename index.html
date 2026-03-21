@@ -128,6 +128,16 @@
     animation: up .5s ease .55s forwards;
   }
 
+  .ticker {
+    margin-top: clamp(6px, 1vh, 10px);
+    font-size: clamp(9px, 2.2vw, 11px);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: #999;
+    opacity: 0;
+    animation: up .5s ease .6s forwards;
+  }
+
   .guidelines-link {
     display: inline-block;
     margin-top: clamp(16px, 3vh, 24px);
@@ -138,7 +148,7 @@
     color: #bbb;
     transition: color .15s ease;
     opacity: 0;
-    animation: up .5s ease .6s forwards;
+    animation: up .5s ease .65s forwards;
   }
   .guidelines-link:hover { color: #888; }
 
@@ -159,7 +169,7 @@
     to { opacity: 1; transform: translateY(0); }
   }
   @media (prefers-reduced-motion: reduce) {
-    .logo-stack, h1, .sub, .small, .cta, .founding, .guidelines-link { animation: none; opacity: 1; }
+    .logo-stack, h1, .sub, .small, .cta, .founding, .ticker, .guidelines-link { animation: none; opacity: 1; }
   }
 </style>
 </head>
@@ -175,6 +185,7 @@
     <p class="small">No app to download. Just Slack.</p>
     <a href="https://join.slack.com/t/partnermatch/shared_invite/zt-3s50e7zr9-FHEx_kJtc7tah6_RwrHNpQ" class="cta">Become a founding member</a>
     <p class="founding">First 500. Free. Forever.</p>
+    <p class="ticker" id="ticker"></p>
     <a href="/guidelines" class="guidelines-link">Community Guidelines</a>
   </div>
 </div>
@@ -184,6 +195,24 @@
   <span class="yellow"> — </span>
   <span class="magenta">NYC 2026</span>
 </div>
+
+<script>
+(function() {
+  var API = "https://worker-production-81ea.up.railway.app/api/count";
+  fetch(API)
+    .then(function(r) { return r.json(); })
+    .then(function(d) {
+      if (d.remaining > 0) {
+        document.getElementById("ticker").textContent =
+          d.remaining + " of 500 spots remaining";
+      } else {
+        document.getElementById("ticker").textContent =
+          "Founding member spots are full";
+      }
+    })
+    .catch(function() {});
+})();
+</script>
 
 </body>
 </html>
