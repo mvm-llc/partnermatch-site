@@ -7,6 +7,7 @@
 <meta name="description" content="NYC tennis. Find a hitting partner. All boroughs. All levels. No app. Just Slack. First 500 members free forever.">
 <meta property="og:title" content="PARTNER MATCH">
 <meta property="og:description" content="Hitting a wall? Find a partner. NYC tennis. First 500 free forever.">
+<meta property="og:image" content="https://partnermatch.io/og-image.png">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://partnermatch.io">
 <link rel="icon" type="image/png" href="favicon.png">
@@ -42,16 +43,19 @@
     flex: 1;
   }
 
-  /* ── Logo stack — left aligned ── */
-  .logo-stack {
+  .logo-link {
+    display: block;
     width: clamp(160px, 40vw, 280px);
-    height: auto;
     margin-bottom: 8vh;
     opacity: 0;
     animation: up .5s ease .1s forwards;
   }
+  .logo-stack {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
 
-  /* ── Main content — centered ── */
   .content {
     text-align: center;
     display: flex;
@@ -72,9 +76,7 @@
     animation: up .5s ease .2s forwards;
   }
 
-  h1 .green {
-    color: #00ff00;
-  }
+  h1 .green { color: #00ff00; }
 
   .sub {
     font-size: clamp(13px, 3.5vw, 20px);
@@ -152,7 +154,6 @@
   }
   .guidelines-link:hover { color: #888; }
 
-  /* ── Footer ── */
   .foot {
     padding: clamp(16px, 3vh, 24px) 6vw;
     text-align: center;
@@ -163,21 +164,25 @@
   .foot .cyan { color: #00ffff; }
   .foot .yellow { color: #ffff00; }
   .foot .magenta { color: #ff00ff; }
+  .foot a { text-decoration: none; }
+  .foot .ig { color: #aaa; margin-left: 1em; transition: color .15s ease; }
+  .foot .ig:hover { color: #666; }
 
   @keyframes up {
     from { opacity: 0; transform: translateY(12px); }
     to { opacity: 1; transform: translateY(0); }
   }
   @media (prefers-reduced-motion: reduce) {
-    .logo-stack, h1, .sub, .small, .cta, .founding, .ticker, .guidelines-link { animation: none; opacity: 1; }
+    .logo-link, h1, .sub, .small, .cta, .founding, .ticker, .guidelines-link { animation: none; opacity: 1; }
   }
 </style>
 </head>
 <body>
 
 <div class="page">
-  <!-- Logo stack: all 5 colors, left-aligned -->
-  <img src="logo-stack.png" alt="PARTNER MATCH" class="logo-stack">
+  <a href="/" class="logo-link">
+    <img src="logo-stack.png" alt="PARTNER MATCH" class="logo-stack">
+  </a>
 
   <div class="content">
     <h1>Hitting a wall?<br><span class="green">Find a partner.</span></h1>
@@ -194,6 +199,7 @@
   <span class="cyan">Partner Match</span>
   <span class="yellow"> — </span>
   <span class="magenta">NYC 2026</span>
+  <a href="https://instagram.com/partnermatch.io" class="ig">Instagram</a>
 </div>
 
 <script>
