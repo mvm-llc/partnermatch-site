@@ -7,13 +7,14 @@
 <meta name="description" content="PARTNER MATCH community guidelines. Show up. Be honest. Communicate. Respect everyone's time.">
 <meta property="og:title" content="PARTNER MATCH — Community Guidelines">
 <meta property="og:description" content="How our NYC tennis community works.">
+<meta property="og:image" content="https://partnermatch.io/og-image.png">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://partnermatch.io/guidelines">
-<link rel="icon" type="image/png" href="favicon.png">
+<link rel="icon" type="image/png" href="../favicon.png">
 <style>
   @font-face {
     font-family: 'Square721';
-    src: url('square721-bold-ext.otf') format('opentype');
+    src: url('../square721-bold-ext.otf') format('opentype');
     font-weight: 700;
     font-style: normal;
     font-display: swap;
@@ -44,10 +45,15 @@
     border-bottom: 1px solid #f0f0f0;
   }
 
-  .logo-stack {
+  .logo-link {
+    display: block;
     width: clamp(80px, 20vw, 140px);
-    height: auto;
     flex-shrink: 0;
+  }
+  .logo-stack {
+    width: 100%;
+    height: auto;
+    display: block;
   }
 
   .header-text h1 {
@@ -163,7 +169,7 @@
 
   .foot {
     text-align: center;
-    padding: clamp(16px, 3vh, 24px) 0;
+    padding: clamp(16px, 3vh, 24px) 6vw;
     font-size: clamp(9px, 2vw, 11px);
     letter-spacing: 0.08em;
     text-transform: uppercase;
@@ -171,6 +177,9 @@
   .foot .cyan { color: #00ffff; }
   .foot .yellow { color: #ffff00; }
   .foot .magenta { color: #ff00ff; }
+  .foot a { text-decoration: none; }
+  .foot .ig { color: #aaa; margin-left: 1em; transition: color .15s ease; }
+  .foot .ig:hover { color: #666; }
 </style>
 </head>
 <body>
@@ -178,7 +187,9 @@
 <div class="page">
 
   <div class="header">
-    <img src="logo-stack.png" alt="PARTNER MATCH" class="logo-stack">
+    <a href="/" class="logo-link">
+      <img src="../logo-stack.png" alt="PARTNER MATCH" class="logo-stack">
+    </a>
     <div class="header-text">
       <h1>Community Guidelines</h1>
       <p class="subtitle">We're glad you're here!</p>
@@ -312,6 +323,7 @@
   <span class="cyan">Partner Match</span>
   <span class="yellow"> — </span>
   <span class="magenta">NYC 2026</span>
+  <a href="https://instagram.com/partnermatch.io" class="ig">Instagram</a>
 </div>
 
 </body>
