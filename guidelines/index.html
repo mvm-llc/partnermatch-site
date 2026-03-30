@@ -67,7 +67,26 @@
     font-size: clamp(11px, 2.8vw, 14px);
     color: #999;
   }
-
+  
+  .nav {
+  display: flex;
+  gap: clamp(16px, 4vw, 28px);
+  padding: clamp(12px, 2vh, 16px) 0;
+  border-bottom: 1px solid #f0f0f0;
+  }
+  
+  .nav a {
+  font-size: clamp(10px, 2.4vw, 12px);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: #bbb;
+  transition: color .15s ease;
+  }
+  
+  .nav a:hover { color: #888; }
+  .nav a.active { color: #000; }
+  
   .body {
     padding: clamp(24px, 4vh, 36px) 0;
   }
