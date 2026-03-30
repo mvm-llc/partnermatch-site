@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PARTNER MATCH — How It Works</title>
+<meta name="description" content="Find a hitting partner in 60 seconds. Here's how PARTNER MATCH works.">
+<meta property="og:title" content="PARTNER MATCH — How It Works">
+<meta property="og:description" content="Post. Match. Play. Find a hitting partner in 60 seconds.">
+<meta property="og:image" content="https://partnermatch.io/og-image.png">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://partnermatch.io/how-it-works">
+<link rel="icon" type="image/png" href="../favicon.png">
+<style>
+  @font-face {
+    font-family: 'Square721';
+    src: url('../square721-bold-ext.otf') format('opentype');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #fff;
+    color: #000;
+    font-family: 'Square721', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-weight: 700;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .page {
+    width: 100%;
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 0 6vw;
+  }
+
+  /* ── Header ── */
+  .header {
+    display: flex;
+    align-items: center;
+    gap: clamp(16px, 4vw, 28px);
+    padding: clamp(24px, 5vh, 40px) 0;
+    border-bottom: 1px solid #f0f0f0;
+  }
+
+  .logo-link {
+    display: block;
+    width: clamp(80px, 20vw, 140px);
+    flex-shrink: 0;
+  }
+  .logo-stack {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .header-text h1 {
+    font-size: clamp(20px, 5.5vw, 32px);
+    line-height: 1.1;
+    color: #000;
+    margin-bottom: 4px;
+  }
+
+  .header-text .subtitle {
+    font-size: clamp(11px, 2.8vw, 14px);
+    color: #999;
+  }
+
+  /* ── Nav links ── */
+  .nav {
+    display: flex;
+    gap: clamp(16px, 4vw, 28px);
+    padding: clamp(12px, 2vh, 16px) 0;
+    border-bottom: 1px solid #f0f0f0;
+  }
+
+  .nav a {
+    font-size: clamp(10px, 2.4vw, 12px);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: #bbb;
+    transition: color .15s ease;
+  }
+  .nav a:hover { color: #888; }
+  .nav a.active { color: #000; }
+
+  /* ── Body ── */
+  .body {
+    padding: clamp(24px, 4vh, 36px) 0;
+  }
+
+  /* ── Video ── */
+  .video-container {
+    position: relative;
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto clamp(28px, 4vh, 36px);
+    border-radius: 8px;
+    overflow: hidden;
+    background: #000;
+    box-shadow: 0 2px 20px rgba(0,0,0,.08);
+  }
+
+  .video-container video {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .video-container iframe {
+    width: 100%;
+    aspect-ratio: 9/16;
+    border: none;
+    display: block;
+  }
+
+  .video-caption {
+    text-align: center;
+    font-size: clamp(10px, 2.4vw, 12px);
+    color: #bbb;
+    margin-bottom: clamp(28px, 4vh, 36px);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  /* ── Steps ── */
+  .step {
+    display: flex;
+    gap: clamp(10px, 2.5vw, 14px);
+    align-items: flex-start;
+    margin-bottom: clamp(20px, 3vh, 28px);
+  }
+
+  .step .num {
+    font-size: clamp(20px, 5vw, 28px);
+    color: #00ff00;
+    line-height: 1;
+    flex-shrink: 0;
+    font-style: italic;
+    letter-spacing: 1px;
+    min-width: clamp(24px, 5vw, 32px);
+  }
+
+  .step .content h2 {
+    font-size: clamp(13px, 3.2vw, 16px);
+    color: #000;
+    margin-bottom: 4px;
+    line-height: 1.2;
+  }
+
+  .step .content p {
+    font-size: clamp(12px, 2.8vw, 14px);
+    color: #888;
+    line-height: 1.7;
+  }
+
+  .step .content .fields {
+    margin-top: 8px;
+  }
+
+  .step .content .field {
+    font-size: clamp(12px, 2.8vw, 14px);
+    color: #888;
+    line-height: 1.8;
+  }
+
+  .step .content .field strong {
+    color: #555;
+  }
+
+  /* ── Pro tip ── */
+  .pro-tip {
+    border-left: 3px solid #00ff00;
+    padding-left: clamp(12px, 3vw, 16px);
+    margin: clamp(28px, 4vh, 36px) 0;
+  }
+
+  .pro-tip .label {
+    font-size: clamp(10px, 2.4vw, 12px);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #999;
+    margin-bottom: 6px;
+  }
+
+  .pro-tip p {
+    font-size: clamp(12px, 3vw, 14px);
+    color: #555;
+    line-height: 1.8;
+  }
+
+  /* ── Summary ── */
+  .summary {
+    background: #f5f5f5;
+    padding: clamp(14px, 3vh, 20px) clamp(16px, 3vw, 20px);
+    border-radius: 4px;
+    margin: clamp(28px, 4vh, 36px) 0;
+    text-align: center;
+  }
+
+  .summary p {
+    font-size: clamp(13px, 3.2vw, 16px);
+    color: #000;
+    line-height: 1.5;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+  }
+
+  .summary .green { color: #00ff00; }
+
+  /* ── CTA ── */
+  .cta-section {
+    text-align: center;
+    margin: clamp(20px, 3vh, 28px) 0;
+  }
+
+  .cta {
+    display: inline-block;
+    padding: clamp(12px, 2.5vh, 16px) clamp(28px, 8vw, 48px);
+    background: #00ff00;
+    color: #000;
+    font-family: inherit;
+    font-weight: 700;
+    font-size: clamp(12px, 3vw, 15px);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: none;
+    border-radius: 2px;
+    cursor: pointer;
+    transition: transform .12s ease, box-shadow .12s ease;
+  }
+  .cta:hover { transform: translateY(-2px); box-shadow: 0 4px 20px rgba(0,255,0,.3); }
+  .cta:active { transform: translateY(0); box-shadow: none; }
+
+  /* ── Footer ── */
+  .foot {
+    text-align: center;
+    padding: clamp(16px, 3vh, 24px) 6vw;
+    font-size: clamp(9px, 2vw, 11px);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .foot .cyan { color: #00ffff; }
+  .foot .yellow { color: #ffff00; }
+  .foot .magenta { color: #ff00ff; }
+  .foot a { text-decoration: none; }
+  .foot .ig { color: #aaa; margin-left: 1em; transition: color .15s ease; }
+  .foot .ig:hover { color: #666; }
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <div class="header">
+    <a href="/" class="logo-link">
+      <img src="../logo-stack.png" alt="PARTNER MATCH" class="logo-stack">
+    </a>
+    <div class="header-text">
+      <h1>How It Works</h1>
+      <p class="subtitle">Post. Match. Play.</p>
+    </div>
+  </div>
+
+  <div class="nav">
+    <a href="/">Home</a>
+    <a href="/guidelines">Guidelines</a>
+    <a href="/how-it-works" class="active">How It Works</a>
+  </div>
+
+  <div class="body">
+    <div class="video-container">
+      <video controls playsinline poster="../og-image.png">
+        <source src="How-To-Match.mp4" type="video/mp4">
+      </video>
+    </div>
+    <p class="video-caption">Watch: How to post a /match</p>
+
+    <div class="step">
+      <span class="num">1</span>
+      <div class="content">
+        <h2>Type /match and tap send</h2>
+        <p>Open any channel in Slack and type /match. This opens the match form. Works on phone or desktop.</p>
+      </div>
+    </div>
+
+    <div class="step">
+      <span class="num">2</span>
+      <div class="content">
+        <h2>Fill in the details</h2>
+        <div class="fields">
+          <p class="field"><strong>When:</strong> Today, Tomorrow, or pick a future date</p>
+          <p class="field"><strong>Where:</strong> Choose a court from the dropdown</p>
+          <p class="field"><strong>Looking to:</strong> Match, Rally, or both</p>
+          <p class="field"><strong>Flexible:</strong> Open to switching time or location?</p>
+          <p class="field"><strong>Notes:</strong> Optional — "court reserved" or "9am–12pm"</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="step">
+      <span class="num">3</span>
+      <div class="content">
+        <h2>Tap "Post It"</h2>
+        <p>Your match card goes live in your borough channel. Future dates also post to #future-play.</p>
+      </div>
+    </div>
+
+    <div class="step">
+      <span class="num">4</span>
+      <div class="content">
+        <h2>Another player taps "I'm in!"</h2>
+        <p>You'll get a message from the PARTNER MATCH App the moment someone accepts. DM each other to confirm details and get on court.</p>
+      </div>
+    </div>
+
+    <div class="pro-tip">
+      <p class="label">Pro tip</p>
+      <p>You'll also get suggested matches automatically when another player wants to play on the same day — even if you didn't see each other's posts.</p>
+    </div>
+
+    <div class="summary">
+      <p>/match → fill in → post → <span class="green">play.</span></p>
+    </div>
+
+    <div class="cta-section">
+      <a href="https://join.slack.com/t/partnermatch/shared_invite/zt-3s50e7zr9-FHEx_kJtc7tah6_RwrHNpQ" class="cta">Become a founding member</a>
+    </div>
+
+  </div>
+
+</div>
+
+<div class="foot">
+  <span class="cyan">Partner Match</span>
+  <span class="yellow"> — </span>
+  <span class="magenta">NYC 2026</span>
+  <a href="https://instagram.com/partnermatch.io" class="ig">Instagram</a>
+</div>
+
+</body>
+</html>
