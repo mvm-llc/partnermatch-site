@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -20,188 +21,204 @@
     font-display: swap;
   }
 
-  * { margin: 0; padding: 0; box-sizing: border-box; }
+- { margin: 0; padding: 0; box-sizing: border-box; }
 
-  body {
-    background: #fff;
-    color: #000;
-    font-family: 'Square721', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    font-weight: 700;
-    min-height: 100dvh;
-    display: flex;
-    flex-direction: column;
-    -webkit-font-smoothing: antialiased;
-  }
+body {
+background: #fff;
+color: #000;
+font-family: ‘Square721’, ‘Helvetica Neue’, Helvetica, Arial, sans-serif;
+font-weight: 700;
+min-height: 100dvh;
+display: flex;
+flex-direction: column;
+-webkit-font-smoothing: antialiased;
+}
 
-  .page {
-    width: 100%;
-    max-width: 640px;
-    margin: 0 auto;
-    padding: 0 6vw;
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-  }
+.page {
+width: 100%;
+max-width: 640px;
+margin: 0 auto;
+padding: 0 6vw;
+display: flex;
+flex-direction: column;
+flex: 1;
+}
 
-  .logo-link {
-    display: block;
-    width: clamp(80px, 20vw, 140px);
-    margin-bottom: 8vh;
-    opacity: 0;
-    animation: up .5s ease .1s forwards;
-  }
-  .logo-stack {
-    width: 100%;
-    height: auto;
-    display: block;
-  }
-  
-  .nav {
-    display: flex;
-    gap: clamp(16px, 4vw, 28px);
-    padding: clamp(12px, 2vh, 16px) 0;
-    border-top: 1px solid #f0f0f0;
-    border-bottom: 1px solid #f0f0f0;
-    margin-bottom: 4vh;
-  }
-  .nav a {
-  font-size: clamp(10px, 2.4vw, 12px);
-  letter-spacing: 0.05em;
+/* ── Header — matches guidelines/how-it-works ── */
+.header {
+display: flex;
+align-items: center;
+gap: clamp(16px, 4vw, 28px);
+padding: clamp(24px, 5vh, 40px) 0;
+border-bottom: 1px solid #f0f0f0;
+}
+
+.logo-link {
+display: block;
+width: clamp(80px, 20vw, 140px);
+flex-shrink: 0;
+}
+.logo-stack {
+width: 100%;
+height: auto;
+display: block;
+}
+
+.header-text h1 {
+font-size: clamp(20px, 5.5vw, 32px);
+line-height: 1.1;
+color: #000;
+margin-bottom: 4px;
+}
+
+.header-text h1 .green { color: #00ff00; }
+
+.header-text .subtitle {
+font-size: clamp(11px, 2.8vw, 14px);
+color: #999;
+}
+
+/* ── Nav ── */
+.nav {
+display: flex;
+gap: clamp(16px, 4vw, 28px);
+padding: clamp(12px, 2vh, 16px) 0;
+border-bottom: 1px solid #f0f0f0;
+}
+.nav a {
+font-size: clamp(10px, 2.4vw, 12px);
+letter-spacing: 0.05em;
+text-transform: uppercase;
+text-decoration: none;
+color: #bbb;
+transition: color .15s ease;
+}
+.nav a:hover { color: #888; }
+.nav a.active { color: #000; }
+
+/* ── Content ── */
+.content {
+text-align: center;
+display: flex;
+flex-direction: column;
+align-items: center;
+flex: 1;
+justify-content: center;
+padding: clamp(24px, 4vh, 36px) 0;
+}
+.headline {
+  font-size: clamp(28px, 9vw, 56px);
+  line-height: 1.05;
+  letter-spacing: 0.01em;
   text-transform: uppercase;
-  text-decoration: none;
-  color: #bbb;
-  transition: color .15s ease;
-  }
-  .nav a:hover { color: #888; }
-  .nav a.active { color: #000; }
+  color: #000;
+  margin-bottom: clamp(20px, 4vh, 36px);
+  opacity: 0;
+  animation: up .5s ease .1s forwards;
+}
+.headline .green { color: #00ff00; }
 
-  .content {
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    flex: 1;
-    justify-content: center;
-  }
+.sub {
+font-size: clamp(13px, 3.5vw, 20px);
+line-height: 1.5;
+letter-spacing: 0.03em;
+text-transform: uppercase;
+color: #000;
+margin-bottom: clamp(6px, 1.5vh, 12px);
+opacity: 0;
+animation: up .5s ease .2s forwards;
+}
 
-  h1 {
-    font-size: clamp(28px, 9vw, 56px);
-    line-height: 1.05;
-    letter-spacing: 0.01em;
-    text-transform: uppercase;
-    color: #000;
-    margin-bottom: clamp(20px, 4vh, 36px);
-    opacity: 0;
-    animation: up .5s ease .2s forwards;
-  }
+.small {
+font-size: clamp(10px, 2.5vw, 14px);
+letter-spacing: 0.04em;
+text-transform: uppercase;
+color: #aaa;
+margin-bottom: clamp(28px, 5vh, 48px);
+opacity: 0;
+animation: up .5s ease .3s forwards;
+}
 
-  h1 .green { color: #00ff00; }
+.cta {
+display: inline-block;
+padding: clamp(14px, 3vh, 20px) clamp(32px, 10vw, 56px);
+background: #00ff00;
+color: #000;
+font-family: inherit;
+font-weight: 700;
+font-size: clamp(13px, 3.2vw, 18px);
+letter-spacing: 0.04em;
+text-transform: uppercase;
+text-decoration: none;
+border: none;
+border-radius: 2px;
+cursor: pointer;
+transition: transform .12s ease, box-shadow .12s ease;
+opacity: 0;
+animation: up .5s ease .4s forwards;
+}
+.cta:hover { transform: translateY(-2px); box-shadow: 0 4px 20px rgba(0,255,0,.3); }
+.cta:active { transform: translateY(0); box-shadow: none; }
 
-  .sub {
-    font-size: clamp(13px, 3.5vw, 20px);
-    line-height: 1.5;
-    letter-spacing: 0.03em;
-    text-transform: uppercase;
-    color: #000;
-    margin-bottom: clamp(6px, 1.5vh, 12px);
-    opacity: 0;
-    animation: up .5s ease .3s forwards;
-  }
+.founding {
+margin-top: clamp(14px, 2.5vh, 20px);
+font-size: clamp(11px, 2.8vw, 14px);
+letter-spacing: 0.04em;
+text-transform: uppercase;
+color: #00ff00;
+opacity: 0;
+animation: up .5s ease .45s forwards;
+}
 
-  .small {
-    font-size: clamp(10px, 2.5vw, 14px);
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    color: #aaa;
-    margin-bottom: clamp(28px, 5vh, 48px);
-    opacity: 0;
-    animation: up .5s ease .4s forwards;
-  }
+.ticker {
+margin-top: clamp(6px, 1vh, 10px);
+font-size: clamp(9px, 2.2vw, 11px);
+letter-spacing: 0.04em;
+text-transform: uppercase;
+color: #999;
+opacity: 0;
+animation: up .5s ease .5s forwards;
+}
 
-  .cta {
-    display: inline-block;
-    padding: clamp(14px, 3vh, 20px) clamp(32px, 10vw, 56px);
-    background: #00ff00;
-    color: #000;
-    font-family: inherit;
-    font-weight: 700;
-    font-size: clamp(13px, 3.2vw, 18px);
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    text-decoration: none;
-    border: none;
-    border-radius: 2px;
-    cursor: pointer;
-    transition: transform .12s ease, box-shadow .12s ease;
-    opacity: 0;
-    animation: up .5s ease .5s forwards;
-  }
-  .cta:hover { transform: translateY(-2px); box-shadow: 0 4px 20px rgba(0,255,0,.3); }
-  .cta:active { transform: translateY(0); box-shadow: none; }
+/* ── Footer ── */
+.foot {
+padding: clamp(16px, 3vh, 24px) 6vw;
+text-align: center;
+font-size: clamp(9px, 2vw, 11px);
+letter-spacing: 0.08em;
+text-transform: uppercase;
+}
+.foot .cyan { color: #00ffff; }
+.foot .yellow { color: #ffff00; }
+.foot .magenta { color: #ff00ff; }
+.foot a { text-decoration: none; }
+.foot .ig { color: #aaa; margin-left: 1em; transition: color .15s ease; }
+.foot .ig:hover { color: #666; }
 
-  .founding {
-    margin-top: clamp(14px, 2.5vh, 20px);
-    font-size: clamp(11px, 2.8vw, 14px);
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    color: #00ff00;
-    opacity: 0;
-    animation: up .5s ease .55s forwards;
-  }
-
-  .ticker {
-    margin-top: clamp(6px, 1vh, 10px);
-    font-size: clamp(9px, 2.2vw, 11px);
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    color: #999;
-    opacity: 0;
-    animation: up .5s ease .6s forwards;
-  }
-
-  .guidelines-link {
-    display: inline-block;
-    margin-top: clamp(16px, 3vh, 24px);
-    font-size: clamp(10px, 2.4vw, 12px);
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-    text-decoration: none;
-    color: #bbb;
-    transition: color .15s ease;
-    opacity: 0;
-    animation: up .5s ease .65s forwards;
-  }
-  .guidelines-link:hover { color: #888; }
-
-  .foot {
-    padding: clamp(16px, 3vh, 24px) 6vw;
-    text-align: center;
-    font-size: clamp(9px, 2vw, 11px);
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-  }
-  .foot .cyan { color: #00ffff; }
-  .foot .yellow { color: #ffff00; }
-  .foot .magenta { color: #ff00ff; }
-  .foot a { text-decoration: none; }
-  .foot .ig { color: #aaa; margin-left: 1em; transition: color .15s ease; }
-  .foot .ig:hover { color: #666; }
-
-  @keyframes up {
-    from { opacity: 0; transform: translateY(12px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-  @media (prefers-reduced-motion: reduce) {
-    .logo-link, h1, .sub, .small, .cta, .founding, .ticker, .guidelines-link { animation: none; opacity: 1; }
-  }
+@keyframes up {
+from { opacity: 0; transform: translateY(12px); }
+to { opacity: 1; transform: translateY(0); }
+}
+@media (prefers-reduced-motion: reduce) {
+.sub, .small, .cta, .founding, .ticker { animation: none; opacity: 1; }
+}
 </style>
+
 </head>
 <body>
 
 <div class="page">
-  <a href="/" class="logo-link">
-    <img src="logo-stack.png" alt="PARTNER MATCH" class="logo-stack">
-  </a>
+
+  <div class="header">
+    <a href="/" class="logo-link">
+      <img src="logo-stack.png" alt="PARTNER MATCH" class="logo-stack">
+    </a>
+    <div class="header-text">
+      <h1>PARTNER MATCH</h1>
+      <p class="subtitle">NYC tennis community</p>
+    </div>
+  </div>
+
   <div class="nav">
     <a href="/" class="active">Home</a>
     <a href="/guidelines">Guidelines</a>
@@ -209,13 +226,14 @@
   </div>
 
   <div class="content">
-    <h1>Hitting a wall?<br><span class="green">Find a partner.</span></h1>
+    <h2 class="headline">Hitting a wall?<br><span class="green">Find a partner.</span></h2>
     <p class="sub">NYC tennis. All boroughs.<br>All levels.</p>
     <p class="small">No app. Just Slack.</p>
     <a href="https://join.slack.com/t/partnermatch/shared_invite/zt-3s50e7zr9-FHEx_kJtc7tah6_RwrHNpQ" class="cta">Become a founding member</a>
     <p class="founding">First 500. Free. Forever.</p>
     <p class="ticker" id="ticker"></p>
   </div>
+
 </div>
 
 <div class="foot">
