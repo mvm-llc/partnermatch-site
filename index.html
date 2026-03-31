@@ -73,32 +73,34 @@
 
 /* ── Nav ── */
 .nav {
-display: flex;
-gap: clamp(16px, 4vw, 28px);
-padding: clamp(12px, 2vh, 16px) 0;
-border-bottom: 1px solid #f0f0f0;
+  display: flex;
+  gap: clamp(16px, 4vw, 28px);
+  padding: clamp(12px, 2vh, 16px) 0;
+  border-bottom: 1px solid #f0f0f0;
 }
+  
 .nav a {
-font-size: clamp(10px, 2.4vw, 12px);
-letter-spacing: 0.05em;
-text-transform: uppercase;
-text-decoration: none;
-color: #bbb;
-transition: color .15s ease;
+  font-size: clamp(10px, 2.4vw, 12px);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: #bbb;
+  transition: color .15s ease;
 }
 .nav a:hover { color: #888; }
 .nav a.active { color: #000; }
 
 /* ── Content ── */
 .content {
-text-align: center;
-display: flex;
-flex-direction: column;
-align-items: center;
-flex: 1;
-justify-content: center;
-padding: clamp(24px, 4vh, 36px) 0;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  justify-content: center;
+  padding: clamp(24px, 4vh, 36px) 0;
 }
+  
 .headline {
   font-size: clamp(28px, 9vw, 56px);
   line-height: 1.05;
@@ -112,74 +114,74 @@ padding: clamp(24px, 4vh, 36px) 0;
 .headline .green { color: #00ff00; }
 
 .sub {
-font-size: clamp(13px, 3.5vw, 20px);
-line-height: 1.5;
-letter-spacing: 0.03em;
-text-transform: uppercase;
-color: #000;
-margin-bottom: clamp(6px, 1.5vh, 12px);
-opacity: 0;
-animation: up .5s ease .2s forwards;
+  font-size: clamp(13px, 3.5vw, 20px);
+  line-height: 1.5;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: #000;
+  margin-bottom: clamp(6px, 1.5vh, 12px);
+  opacity: 0;
+  animation: up .5s ease .2s forwards;
 }
 
 .small {
-font-size: clamp(10px, 2.5vw, 14px);
-letter-spacing: 0.04em;
-text-transform: uppercase;
-color: #aaa;
-margin-bottom: clamp(28px, 5vh, 48px);
-opacity: 0;
-animation: up .5s ease .3s forwards;
+  font-size: clamp(10px, 2.5vw, 14px);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #aaa;
+  margin-bottom: clamp(28px, 5vh, 48px);
+  opacity: 0;
+  animation: up .5s ease .3s forwards;
 }
 
 .cta {
-display: inline-block;
-padding: clamp(14px, 3vh, 20px) clamp(32px, 10vw, 56px);
-background: #00ff00;
-color: #000;
-font-family: inherit;
-font-weight: 700;
-font-size: clamp(13px, 3.2vw, 18px);
-letter-spacing: 0.04em;
-text-transform: uppercase;
-text-decoration: none;
-border: none;
-border-radius: 2px;
-cursor: pointer;
-transition: transform .12s ease, box-shadow .12s ease;
-opacity: 0;
-animation: up .5s ease .4s forwards;
+  display: inline-block;
+  padding: clamp(12px, 2.5vh, 16px) clamp(28px, 8vw, 48px);
+  background: #00ff00;
+  color: #000;
+  font-family: inherit;
+  font-weight: 700;
+  font-size: clamp(12px, 3vw, 15px);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: none;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: transform .12s ease, box-shadow .12s ease;
+  opacity: 0;
+  animation: up .5s ease .45s forwards;
 }
 .cta:hover { transform: translateY(-2px); box-shadow: 0 4px 20px rgba(0,255,0,.3); }
 .cta:active { transform: translateY(0); box-shadow: none; }
 
 .founding {
-margin-top: clamp(14px, 2.5vh, 20px);
-font-size: clamp(11px, 2.8vw, 14px);
-letter-spacing: 0.04em;
-text-transform: uppercase;
-color: #00ff00;
-opacity: 0;
-animation: up .5s ease .45s forwards;
+  margin-top: clamp(14px, 2.5vh, 20px);
+  font-size: clamp(11px, 2.8vw, 14px);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #00ff00;
+  opacity: 0;
+  animation: up .5s ease .45s forwards;
 }
 
 .ticker {
-margin-top: clamp(6px, 1vh, 10px);
-font-size: clamp(9px, 2.2vw, 11px);
-letter-spacing: 0.04em;
-text-transform: uppercase;
-color: #999;
-opacity: 0;
-animation: up .5s ease .5s forwards;
+  margin-top: clamp(6px, 1vh, 10px);
+  font-size: clamp(9px, 2.2vw, 11px);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #999;
+  opacity: 0;
+  animation: up .5s ease .5s forwards;
 }
 
 /* ── Footer ── */
 .foot {
-padding: clamp(16px, 3vh, 24px) 6vw;
-text-align: center;
-font-size: clamp(9px, 2vw, 11px);
-letter-spacing: 0.08em;
-text-transform: uppercase;
+  padding: clamp(16px, 3vh, 24px) 6vw;
+  text-align: center;
+  font-size: clamp(9px, 2vw, 11px);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 .foot .cyan { color: #00ffff; }
 .foot .yellow { color: #ffff00; }
