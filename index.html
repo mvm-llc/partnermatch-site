@@ -174,6 +174,27 @@
   opacity: 0;
   animation: up .5s ease .5s forwards;
 }
+  
+.quotes {
+  margin-top: clamp(36px, 6vh, 56px);
+  display: flex;
+  flex-direction: column;
+  gap: clamp(12px, 2vh, 18px);
+  opacity: 0;
+  animation: up .5s ease .6s forwards;
+}
+
+.quote {
+  font-size: clamp(10px, 2.6vw, 13px);
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: #999;
+  line-height: 1.5;
+}
+
+.quote .name {
+  color: #00ff00;
+}
 
 /* ── Footer ── */
 .foot {
@@ -195,7 +216,7 @@ from { opacity: 0; transform: translateY(12px); }
 to { opacity: 1; transform: translateY(0); }
 }
 @media (prefers-reduced-motion: reduce) {
-.sub, .small, .cta, .founding, .ticker { animation: none; opacity: 1; }
+.sub, .small, .cta, .founding, .ticker, .quotes { animation: none; opacity: 1; }
 }
 </style>
 
@@ -227,6 +248,10 @@ to { opacity: 1; transform: translateY(0); }
     <a href="https://join.slack.com/t/partnermatch/shared_invite/zt-3s50e7zr9-FHEx_kJtc7tah6_RwrHNpQ" class="cta">Become a founding member</a>
     <p class="founding">First 500. Free. Forever.</p>
     <p class="ticker" id="ticker"></p>
+    <div class="quotes">
+      <p class="quote">"This is exactly what NYC tennis players need" — <span class="name">Aishan</span></p>
+      <p class="quote">"Thank you for creating the app!" — <span class="name">Agustín</span></p>
+    </div>
   </div>
 
 </div>
