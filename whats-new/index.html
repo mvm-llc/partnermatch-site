@@ -1,1 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PARTNER MATCH — What's New</title>
+<meta name="description" content="New features and recent updates on PARTNER MATCH.">
+<meta property="og:title" content="PARTNER MATCH — What's New">
+<meta property="og:description" content="New features and recent updates on PARTNER MATCH.">
+<meta property="og:image" content="https://partnermatch.io/og-image.png">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://partnermatch.io/whats-new">
+<link rel="icon" type="image/png" href="../favicon.png">
+<style>
+  @font-face {
+    font-family: 'Square721';
+    src: url('../square721-bold-ext.otf') format('opentype');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+  }
 
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #fff;
+    color: #000;
+    font-family: 'Square721', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-weight: 700;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .page {
+    width: 100%;
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 0 6vw;
+  }
+
+  /* ── Header ── */
+  .header {
+    display: flex;
+    align-items: center;
+    gap: clamp(16px, 4vw, 28px);
+    padding: clamp(24px, 5vh, 40px) 0;
+    border-bottom: 1px solid #f0f0f0;
+  }
+
+  .logo-link {
+    display: block;
+    width: clamp(80px, 20vw, 140px);
+    flex-shrink: 0;
+  }
+  .logo-stack {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .header-text h1 {
+    font-size: clamp(20px, 5.5vw, 32px);
+    line-height: 1.1;
+    color: #000;
+    margin-bottom: 4px;
+  }
+
+  .header-text .subtitle {
+    font-size: clamp(11px, 2.8vw, 14px);
+    color: #999;
+  }
+
+  /* ── Nav links ── */
+  .nav {
+    display: flex;
+    gap: clamp(14px, 3.5vw, 28px);
+    padding: clamp(12px, 2vh, 16px) 0;
+    border-bottom: 1px solid #f0f0f0;
+    flex-wrap: wrap;
+  }
+
+  .nav a {
+    font-size: clamp(10px, 2.4vw, 12px);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: #bbb;
+    transition: color .15s ease;
+  }
+  .nav a:hover { color: #888; }
+  .nav a.active { color: #000; }
+
+  /* ── Body ── */
+  .body {
+    padding: clamp(24px, 4vh, 36px) 0;
+  }
+
+  /* ── Section header ── */
+  .section-header {
+    margin: clamp(24px, 4vh, 36px) 0 clamp(16px, 2.5vh, 24px);
+    padding-bottom: clamp(8px, 1.5vh, 12px);
+    border-bottom: 1px solid #f0f0f0;
+  }
+  .section-header:first-child { margin-top: 0; }
+
+  .section-header h2 {
+    font-size: clamp(11px, 2.6vw, 13px);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #999;
+  }
+
+  /* ── Feature card ── */
+  .feature {
+    margin-bottom: clamp(28px, 4vh, 40px);
+  }
+
+  .feature-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 12px;
+    margin-bottom: clamp(6px, 1vh, 10px);
+  }
+
+  .feature-meta h3 {
+    font-size: clamp(14px, 3.4vw, 17px);
+    color: #000;
+    line-height: 1.2;
+  }
+
+  .feature-meta .date {
+    font-size: clamp(9px, 2.2vw, 11px);
+    color: #bbb;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    flex-shrink: 0;
+  }
+
+  .feature p {
+    font-size: clamp(12px, 2.8vw, 14px);
+    color: #888;
+    line-height: 1.7;
+    margin-bottom: clamp(10px, 1.5vh, 14px);
+  }
+
+  .feature p:last-child { margin-bottom: 0; }
+
+  .feature p code,
+  .feature .cmd code {
+    font-family: 'Menlo', 'Monaco', monospace;
+    font-size: 0.92em;
+    background: #f5f5f5;
+    color: #000;
+    padding: 1px 6px;
+    border-radius: 3px;
+    letter-spacing: 0;
+  }
+
+  .feature .cmd {
+    color: #555;
+    font-size: clamp(11px, 2.6vw, 13px);
+    margin-top: clamp(10px, 1.5vh, 14px);
+  }
+
+  .feature .cmd a {
+    color: #000;
+    text-decoration: underline;
+    text-decoration-color: #00ff00;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 2px;
+  }
+
+  /* ── Media (video + screenshot) ── */
+  .media {
+    width: 100%;
+    max-width: 320px;
+    margin: clamp(12px, 2vh, 16px) auto;
+    border-radius: 8px;
+    overflow: hidden;
+    background: #000;
+    box-shadow: 0 2px 20px rgba(0,0,0,.08);
+  }
+
+  .media video {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .media img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  /* ── On the Bench (teasers) ── */
+  .feature.teaser .feature-meta h3 {
+    color: #555;
+  }
+  .feature.teaser .feature-meta::before {
+    content: "";
+    width: 8px;
+    height: 8px;
+    background: #00ff00;
+    border-radius: 50%;
+    align-self: center;
+    margin-right: 8px;
+    flex-shrink: 0;
+  }
+  .feature.teaser .feature-meta {
+    align-items: center;
+  }
+
+  /* ── Summary ── */
+  .summary {
+    background: #f5f5f5;
+    padding: clamp(14px, 3vh, 20px) clamp(16px, 3vw, 20px);
+    border-radius: 4px;
+    margin: clamp(28px, 4vh, 36px) 0;
+    text-align: center;
+  }
+
+  .summary p {
+    font-size: clamp(13px, 3.2vw, 16px);
+    color: #000;
+    line-height: 1.5;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+  }
+
+  .summary .green { color: #00ff00; }
+
+  /* ── CTA ── */
+  .cta-section {
+    text-align: center;
+    margin: clamp(20px, 3vh, 28px) 0;
+  }
+
+  .cta {
+    display: inline-block;
+    padding: clamp(12px, 2.5vh, 16px) clamp(28px, 8vw, 48px);
+    background: #00ff00;
+    color: #000;
+    font-family: inherit;
+    font-weight: 700;
+    font-size: clamp(12px, 3vw, 15px);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: none;
+    border-radius: 2px;
+    cursor: pointer;
+    transition: transform .12s ease, box-shadow .12s ease;
+  }
+  .cta:hover { transform: translateY(-2px); box-shadow: 0 4px 20px rgba(0,255,0,.3); }
+  .cta:active { transform: translateY(0); box-shadow: none; }
+
+  /* ── Footer ── */
+  .foot {
+    text-align: center;
+    padding: clamp(16px, 3vh, 24px) 6vw;
+    font-size: clamp(9px, 2vw, 11px);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .foot .cyan { color: #00ffff; }
+  .foot .yellow { color: #ffff00; }
+  .foot .magenta { color: #ff00ff; }
+  .foot a { text-decoration: none; }
+  .foot .ig { color: #aaa; margin-left: 1em; transition: color .15s ease; }
+  .foot .ig:hover { color: #666; }
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <div class="header">
+    <a href="/" class="logo-link">
+      <img src="../logo-stack.png" alt="PARTNER MATCH" class="logo-stack">
+    </a>
+    <div class="header-text">
+      <h1>What's New</h1>
+      <p class="subtitle">Built for you.</p>
+    </div>
+  </div>
+
+  <div class="nav">
+    <a href="/">Home</a>
+    <a href="/whats-new" class="active">What's New</a>
+    <a href="/how-it-works">How It Works</a>
+    <a href="/guidelines">Guidelines</a>
+  </div>
+
+  <div class="body">
+
+    <!-- ── FINDING MATCHES ── -->
+    <div class="section-header">
+      <h2>Finding Matches</h2>
+    </div>
+
+    <div class="feature">
+      <div class="feature-meta">
+        <h3>Browse open matches by borough</h3>
+        <span class="date">Apr 2026</span>
+      </div>
+      <p>See who's looking to play, organized by neighborhood. Find one that fits your schedule, or post your own.</p>
+      <div class="media">
+        <video controls playsinline muted preload="metadata">
+          <source src="openmatch.mp4" type="video/mp4">
+        </video>
+      </div>
+      <p class="cmd">Try it: <code>/openmatch</code></p>
+    </div>
+
+    <div class="feature">
+      <div class="feature-meta">
+        <h3>New time selection flow</h3>
+        <span class="date">Apr 2026</span>
+      </div>
+      <p>Picking a time is now the same whether you're playing today, tomorrow, or later this week. Pick your preferred start, add notes for duration or hard cut-offs, done.</p>
+      <p class="cmd">See it in action in the <a href="/how-it-works">How It Works</a> video.</p>
+    </div>
+
+    <!-- ── AFTER YOU PLAY ── -->
+    <div class="section-header">
+      <h2>After You Play</h2>
+    </div>
+
+    <div class="feature">
+      <div class="feature-meta">
+        <h3>Match reviews</h3>
+        <span class="date">Apr 2026</span>
+      </div>
+      <p>Leave a review after every match. Be kind, be honest. Reviews help everyone find the right partners.</p>
+      <div class="media">
+        <video controls playsinline muted preload="metadata">
+          <source src="review-match.mp4" type="video/mp4">
+        </video>
+      </div>
+      <p class="cmd">Try it: <code>/reviewmatchplayer</code></p>
+    </div>
+
+    <!-- ── YOUR PROFILE ── -->
+    <div class="section-header">
+      <h2>Your Profile</h2>
+    </div>
+
+    <div class="feature">
+      <div class="feature-meta">
+        <h3>Profile dashboard</h3>
+        <span class="date">Apr 2026</span>
+      </div>
+      <p>Your tennis story, level, courts, open match requests, upcoming matches, and reviews — all in one place. Use <code>/profile</code> to see yours, or <code>/profile @username</code> to see another player's.</p>
+      <div class="media">
+        <img src="profile.jpg" alt="Profile dashboard showing bio, level, courts, open matches, upcoming matches, and reviews">
+      </div>
+      <p class="cmd">Try it: <code>/profile</code></p>
+    </div>
+
+    <!-- ── ON THE BENCH ── -->
+    <div class="section-header">
+      <h2>On the Bench</h2>
+    </div>
+
+    <div class="feature teaser">
+      <div class="feature-meta">
+        <h3>Weekly digest emails</h3>
+      </div>
+      <p>A short Friday email with what's open this weekend in your borough — for when Slack is muted but you still want to hit.</p>
+    </div>
+
+    <div class="feature teaser">
+      <div class="feature-meta">
+        <h3>Badges &amp; milestones</h3>
+      </div>
+      <p>Track your match history, streaks, and shared opponents. Earn recognition for showing up — Founding 50, Welcomer, Century Club, and more.</p>
+    </div>
+
+    <div class="summary">
+      <p>Built with the community. <span class="green">For the community.</span></p>
+    </div>
+
+    <div class="cta-section">
+      <a href="https://join.slack.com/t/partnermatch/shared_invite/zt-3s50e7zr9-FHEx_kJtc7tah6_RwrHNpQ" class="cta">Become a founding member</a>
+    </div>
+
+  </div>
+
+</div>
+
+<div class="foot">
+  <span class="cyan">Partner Match</span>
+  <span class="yellow"> — </span>
+  <span class="magenta">NYC 2026</span>
+  <a href="https://instagram.com/partnermatch.io" class="ig">Instagram</a>
+</div>
+
+</body>
+</html>
