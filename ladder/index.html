@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PARTNER MATCH — Ladder</title>
+<meta name="description" content="PARTNER MATCH LADDER — Fall '26. Live standings and rules. NYC tennis, every level.">
+<meta property="og:title" content="PARTNER MATCH LADDER — Fall '26">
+<meta property="og:description" content="Live standings. Challenge up. Climb.">
+<meta property="og:image" content="https://partnermatch.io/og-image.png">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://partnermatch.io/ladder">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-H1QGRBCEG9"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-H1QGRBCEG9');
+</script>
+<link rel="icon" type="image/png" href="../favicon.png">
+<style>
+  @font-face {
+    font-family: 'Square721';
+    src: url('../square721-bold-ext.otf') format('opentype');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #fff;
+    color: #000;
+    font-family: 'Square721', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-weight: 700;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .page { width: 100%; max-width: 640px; margin: 0 auto; padding: 0 6vw; }
+
+  /* ── Header ── */
+  .header {
+    display: flex; align-items: center;
+    gap: clamp(16px, 4vw, 28px);
+    padding: clamp(24px, 5vh, 40px) 0;
+    border-bottom: 1px solid #f0f0f0;
+  }
+  .logo-link { display: block; width: clamp(80px, 20vw, 140px); flex-shrink: 0; }
+  .logo-stack { width: 100%; height: auto; display: block; }
+  .header-text h1 { font-size: clamp(20px, 5.5vw, 32px); line-height: 1.1; color: #000; margin-bottom: 4px; }
+  .header-text .subtitle { font-size: clamp(11px, 2.8vw, 14px); color: #999; }
+
+  /* ── Nav ── */
+  .nav {
+    display: flex; gap: clamp(10px, 2.5vw, 20px);
+    padding: clamp(12px, 2vh, 16px) 0;
+    border-bottom: 1px solid #f0f0f0; flex-wrap: wrap;
+  }
+  .nav a {
+    font-size: clamp(10px, 2.4vw, 12px); letter-spacing: 0.05em; text-transform: uppercase;
+    text-decoration: none; color: #bbb; transition: color .15s ease;
+  }
+  .nav a:hover { color: #888; }
+  .nav a.active { color: #000; }
+
+  .body { padding: clamp(24px, 4vh, 36px) 0; }
+
+  /* ── Section labels ── */
+  .section-label {
+    font-size: clamp(10px, 2.4vw, 12px); text-transform: uppercase; letter-spacing: 0.08em;
+    color: #999; margin-bottom: clamp(10px, 2vh, 14px);
+  }
+  .section-label .green { color: #00ff00; }
+
+  /* ── Standings ── */
+  .standings-meta {
+    display: flex; justify-content: space-between; align-items: baseline;
+    font-size: clamp(10px, 2.4vw, 12px); color: #bbb; text-transform: uppercase; letter-spacing: 0.05em;
+    margin-bottom: 8px;
+  }
+  table.standings { width: 100%; border-collapse: collapse; }
+  table.standings th {
+    text-align: left; font-size: clamp(9px, 2.2vw, 11px); color: #bbb;
+    text-transform: uppercase; letter-spacing: 0.06em; padding: 8px 6px;
+    border-bottom: 1px solid #eee;
+  }
+  table.standings td {
+    padding: clamp(9px, 1.6vh, 12px) 6px; font-size: clamp(12px, 2.9vw, 14px);
+    border-bottom: 1px solid #f5f5f5; vertical-align: middle;
+  }
+  table.standings .pos { color: #00ff00; font-style: italic; font-size: clamp(15px, 3.8vw, 20px); width: 44px; letter-spacing: 1px; }
+  table.standings .name { color: #000; }
+  table.standings .lvl { color: #999; font-size: clamp(10px, 2.4vw, 12px); }
+  table.standings .rec { color: #555; white-space: nowrap; }
+  table.standings .mv { white-space: nowrap; text-align: right; font-size: clamp(11px, 2.6vw, 13px); }
+  .mv.up { color: #00aa00; }
+  .mv.down { color: #ff0050; }
+  .mv.flat { color: #ccc; }
+  .tag {
+    display: inline-block; font-size: 9px; letter-spacing: 0.06em; text-transform: uppercase;
+    padding: 2px 6px; margin-left: 6px; border-radius: 2px; vertical-align: middle;
+  }
+  .tag.wildcard { background: #ffff00; color: #000; }
+  .tag.hiatus { background: #eee; color: #888; }
+  .standings-empty, .standings-loading {
+    text-align: center; color: #bbb; font-size: clamp(12px, 2.8vw, 14px); padding: clamp(24px, 4vh, 40px) 0;
+    text-transform: uppercase; letter-spacing: 0.05em;
+  }
+  .legend {
+    font-size: clamp(9px, 2.2vw, 11px); color: #bbb; margin-top: 10px; line-height: 1.8;
+    text-transform: uppercase; letter-spacing: 0.04em;
+  }
+
+  /* ── Join ── */
+  .join-box {
+    background: #f5f5f5; padding: clamp(16px, 3vh, 22px) clamp(16px, 3vw, 20px);
+    border-radius: 4px; margin: clamp(28px, 4vh, 36px) 0;
+  }
+  .join-box h2 { font-size: clamp(14px, 3.4vw, 17px); text-transform: uppercase; letter-spacing: 0.02em; margin-bottom: 10px; }
+  .join-box p { font-size: clamp(12px, 2.8vw, 14px); color: #555; line-height: 1.7; margin-bottom: 8px; }
+  .join-box code {
+    font-family: 'SF Mono', Menlo, monospace; font-size: 0.9em; color: #ff0050;
+    background: #fff; padding: 1px 6px; border-radius: 3px;
+  }
+  .cta-section { text-align: center; margin: clamp(16px, 2.5vh, 22px) 0 0; }
+  .cta {
+    display: inline-block; padding: clamp(12px, 2.5vh, 16px) clamp(28px, 8vw, 48px);
+    background: #00ff00; color: #000; font-family: inherit; font-weight: 700;
+    font-size: clamp(12px, 3vw, 15px); letter-spacing: 0.04em; text-transform: uppercase;
+    text-decoration: none; border: none; border-radius: 2px; cursor: pointer;
+    transition: transform .12s ease, box-shadow .12s ease;
+  }
+  .cta:hover { transform: translateY(-2px); box-shadow: 0 4px 20px rgba(0,255,0,.3); }
+
+  /* ── Rules ── */
+  .rules { margin-top: clamp(32px, 5vh, 44px); }
+  .rules .intro { font-size: clamp(13px, 3.1vw, 15px); color: #000; line-height: 1.6; margin-bottom: clamp(20px, 3vh, 28px); }
+  .rule {
+    display: flex; gap: clamp(10px, 2.5vw, 14px); align-items: flex-start;
+    margin-bottom: clamp(22px, 3.2vh, 30px);
+  }
+  .rule .num {
+    font-size: clamp(20px, 5vw, 28px); color: #00ff00; line-height: 1; flex-shrink: 0;
+    font-style: italic; letter-spacing: 1px; min-width: clamp(24px, 5vw, 32px);
+  }
+  .rule .content h2 { font-size: clamp(13px, 3.2vw, 16px); color: #000; margin-bottom: 6px; line-height: 1.2; }
+  .rule .content p, .rule .content li { font-size: clamp(12px, 2.8vw, 14px); color: #888; line-height: 1.7; }
+  .rule .content ul { list-style: none; margin-top: 4px; }
+  .rule .content li { padding-left: 14px; position: relative; margin-bottom: 4px; }
+  .rule .content li::before { content: "—"; position: absolute; left: 0; color: #ccc; }
+  .rule .content strong { color: #555; }
+  .rule .content code { font-family: 'SF Mono', Menlo, monospace; font-size: 0.9em; color: #ff0050; background: #f7f7f7; padding: 1px 5px; border-radius: 3px; }
+
+  .pro-tip { border-left: 3px solid #00ff00; padding-left: clamp(12px, 3vw, 16px); margin: clamp(28px, 4vh, 36px) 0; }
+  .pro-tip .label { font-size: clamp(10px, 2.4vw, 12px); text-transform: uppercase; letter-spacing: 0.05em; color: #999; margin-bottom: 6px; }
+  .pro-tip p { font-size: clamp(12px, 3vw, 14px); color: #555; line-height: 1.8; }
+
+  .summary {
+    background: #f5f5f5; padding: clamp(14px, 3vh, 20px) clamp(16px, 3vw, 20px);
+    border-radius: 4px; margin: clamp(28px, 4vh, 36px) 0; text-align: center;
+  }
+  .summary p { font-size: clamp(13px, 3.2vw, 16px); color: #000; line-height: 1.5; letter-spacing: 0.02em; text-transform: uppercase; }
+  .summary .green { color: #00ff00; }
+
+  .fineprint { font-size: clamp(10px, 2.4vw, 12px); color: #bbb; line-height: 1.7; margin-top: clamp(20px, 3vh, 28px); }
+  .fineprint a { color: #999; }
+
+  /* ── Footer ── */
+  .foot { text-align: center; padding: clamp(16px, 3vh, 24px) 6vw; font-size: clamp(9px, 2vw, 11px); letter-spacing: 0.08em; text-transform: uppercase; }
+  .foot .cyan { color: #00ffff; } .foot .yellow { color: #ffff00; } .foot .magenta { color: #ff00ff; }
+  .foot a { text-decoration: none; }
+  .foot .ig { color: #aaa; margin-left: 1em; transition: color .15s ease; }
+  .foot .ig:hover { color: #666; }
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <div class="header">
+    <a href="/" class="logo-link">
+      <img src="../logo-stack.png" alt="PARTNER MATCH" class="logo-stack">
+    </a>
+    <div class="header-text">
+      <h1>Ladder</h1>
+      <p class="subtitle">Fall '26 · Challenge up. Climb.</p>
+    </div>
+  </div>
+
+  <div class="nav">
+    <a href="/">Home</a>
+    <a href="/whats-new">What's New</a>
+    <a href="/how-it-works">How It Works</a>
+    <a href="/ladder" class="active">Ladder</a>
+    <a href="/guidelines">Guidelines</a>
+    <a href="/about">About</a>
+  </div>
+
+  <div class="body">
+
+    <!-- ── STANDINGS ── -->
+    <p class="section-label"><span class="green">●</span> Live standings</p>
+    <div class="standings-meta">
+      <span id="player-count">—</span>
+      <span id="season-end">Season ends Nov 22</span>
+    </div>
+    <div id="standings">
+      <p class="standings-loading">Loading standings…</p>
+    </div>
+    <p class="legend">
+      ▲▼ movement since joining &nbsp;·&nbsp; W–L on ladder matches only &nbsp;·&nbsp;
+      <span class="tag wildcard" style="margin-left:0">wildcard</span> = challengeable by anyone &nbsp;·&nbsp;
+      <span class="tag hiatus" style="margin-left:0">hiatus</span> = frozen, unchallengeable
+    </p>
+
+    <!-- ── JOIN ── -->
+    <div class="join-box">
+      <h2>Get on the ladder</h2>
+      <p><strong>Already in PARTNER MATCH?</strong> Open Slack, type <code>/ladder join</code>. You'll start at the bottom. Anyone, any level, any time in the season.</p>
+      <p><strong>Not a member yet?</strong> Join the community first — it's free — then <code>/ladder join</code>.</p>
+      <div class="cta-section">
+        <a href="/" class="cta" onclick="gtag('event', 'cta_click', { event_category: 'engagement', event_label: 'ladder_join' })">Join PARTNER MATCH</a>
+      </div>
+    </div>
+
+    <!-- ── RULES ── -->
+    <div class="rules">
+      <p class="section-label">Rules — Fall '26</p>
+      <p class="intro">You're on a numbered list. You climb by challenging players above you and winning. That's the whole idea. Season runs through <strong>Sunday, November 22</strong>. Free.</p>
+
+      <div class="rule">
+        <span class="num">1</span>
+        <div class="content">
+          <h2>Joining</h2>
+          <ul>
+            <li>Type <code>/ladder join</code> in Slack. Confirm your level, accept these rules, get a position at the bottom.</li>
+            <li><strong>Anyone can join, any level, at any point in the season.</strong></li>
+            <li><strong>Late entrants get a placement window:</strong> your first two challenges can reach up to <strong>10 spots</strong> above you instead of 5, so you sort to your level quickly.</li>
+            <li><strong>Standings are public.</strong> Your name, position, and results are visible to everyone, including here. A ranked season only works with an open record — joining means accepting one.</li>
+            <li>Starting positions are seeded randomly. The first few weeks sort themselves out.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="rule">
+        <span class="num">2</span>
+        <div class="content">
+          <h2>Challenging</h2>
+          <ul>
+            <li>Challenge anyone up to <strong>5 positions above you</strong>.</li>
+            <li>Send it with <code>/hit</code> — pick the player, tick <strong>Ladder challenge</strong>, set a date, time, and court. Ladder challenges are always competitive matches; there's no friendly or rally option once you tick it.</li>
+            <li><strong>One open challenge at a time</strong> between any two players.</li>
+            <li>Play anywhere both players agree. <strong>Weekly sessions are announced in #ladder</strong> — show up and you'll always find your challenge.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="rule">
+        <span class="num">3</span>
+        <div class="content">
+          <h2>Responding</h2>
+          <ul>
+            <li>The challenged player has <strong>72 hours</strong> to accept.</li>
+            <li>Once accepted, you have <strong>14 days</strong> to play.</li>
+            <li>If it hasn't happened by day 14, the challenge <strong>voids</strong> — no result, no penalty for either side. Scheduling problems aren't anyone's fault.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="rule">
+        <span class="num">4</span>
+        <div class="content">
+          <h2>Declining</h2>
+          <ul>
+            <li>You may <strong>decline three challenges per season</strong> with no penalty, no explanation needed.</li>
+            <li>Declining the <strong>same challenger twice within 14 days</strong> is a <strong>walkover</strong> — they take your position.</li>
+            <li>Going on <strong>hiatus</strong> (<code>/ladder hiatus</code>) freezes your position and makes you unchallengeable for up to 2 weeks. Injury, travel, work — use it. It exists so nobody has to duck.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="rule">
+        <span class="num">5</span>
+        <div class="content">
+          <h2>Results</h2>
+          <ul>
+            <li><strong>The winner posts the score</strong> with <code>/score</code>, ideally within 24 hours.</li>
+            <li>Your opponent confirms with one tap. No response in 72 hours and it auto-confirms. Either player can dispute; a second dispute freezes the result for an admin.</li>
+            <li>Confirmed results post to #results and update the standings here.</li>
+            <li><strong>Only ladder challenges count.</strong> Your regular matches, friendlies, and rallies never affect your position.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="rule">
+        <span class="num">6</span>
+        <div class="content">
+          <h2>Positions</h2>
+          <ul>
+            <li><strong>Challenger wins:</strong> the two players swap positions.</li>
+            <li><strong>Challenger loses:</strong> nothing changes. No penalty for challenging up — that is the point.</li>
+            <li>Nobody's position moves unless they play. You can't lose ground because of someone else's result.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="rule">
+        <span class="num">7</span>
+        <div class="content">
+          <h2>Staying active</h2>
+          <ul>
+            <li>Play <strong>at least one ladder match every 2 weeks</strong>.</li>
+            <li>Fall below that and you become a <strong>wildcard</strong>: challengeable by anyone, regardless of the 5-spot range, until you play again.</li>
+            <li>Hiatus pauses this.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="rule">
+        <span class="num">8</span>
+        <div class="content">
+          <h2>Prizes</h2>
+          <p>Awarded at the end of the season. <strong>Play at least 5 matches to qualify</strong> — the ladder rewards showing up, not sitting on a position.</p>
+          <ul>
+            <li><strong>Champion</strong> — finishing at #1</li>
+            <li><strong>Biggest climb</strong> — most positions gained from your starting spot</li>
+            <li><strong>Most matches played</strong></li>
+            <li><strong>Upset of the season</strong> — largest position gap overturned</li>
+          </ul>
+          <p style="margin-top:6px">Season one is free. Prizes to be announced.</p>
+        </div>
+      </div>
+
+      <div class="pro-tip">
+        <p class="label">Conduct</p>
+        <p>The <a href="/guidelines" style="color:#555">community guidelines</a> apply in full. Show up. Be honest about your level. Communicate. Respect people's time. Repeated no-shows lead to removal from the ladder and the community.</p>
+      </div>
+
+      <div class="summary">
+        <p>/hit → play → /score → <span class="green">climb.</span></p>
+      </div>
+
+      <p class="fineprint">
+        Questions, disputes, anything unclear: DM an admin in Slack or email <a href="mailto:team@partnermatch.io">team@partnermatch.io</a>.
+        These rules may be adjusted between seasons. Any mid-season change is announced in #ladder before it takes effect.
+      </p>
+    </div>
+
+  </div>
+</div>
+
+<div class="foot">
+  <span class="cyan">Partner Match</span>
+  <span class="yellow"> — </span>
+  <span class="magenta">NYC 2026</span>
+  <a href="https://instagram.com/partnermatch.io" class="ig">Instagram</a>
+</div>
+
+<script>
+  // ── Set this to the bot's public URL (same host that serves /api/count) ──
+  const API_BASE = "https://YOUR-RAILWAY-APP.up.railway.app";
+
+  function esc(s) { return String(s ?? "").replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+
+  async function loadStandings() {
+    const el = document.getElementById("standings");
+    try {
+      const res = await fetch(API_BASE + "/api/ladder", { cache: "no-store" });
+      const data = await res.json();
+      const rows = data.standings || [];
+      if (data.season_end) {
+        const d = new Date(data.season_end + "T23:59:00");
+        document.getElementById("season-end").textContent =
+          "Season ends " + d.toLocaleDateString("en-US", { month: "short", day: "numeric" });
+      }
+      document.getElementById("player-count").textContent = rows.length + (rows.length === 1 ? " player" : " players");
+      if (!rows.length) {
+        el.innerHTML = '<p class="standings-empty">Nobody\'s on the ladder yet. Be the first.</p>';
+        return;
+      }
+      let html = '<table class="standings"><thead><tr><th>#</th><th>Player</th><th>W–L</th><th style="text-align:right">Move</th></tr></thead><tbody>';
+      for (const r of rows) {
+        const mv = (r.start_position ?? r.position) - r.position;
+        const mvCls = mv > 0 ? "up" : mv < 0 ? "down" : "flat";
+        const mvTxt = mv > 0 ? "▲ " + mv : mv < 0 ? "▼ " + Math.abs(mv) : "—";
+        const tag = r.status === "wildcard" ? '<span class="tag wildcard">wildcard</span>'
+                  : r.status === "hiatus" ? '<span class="tag hiatus">hiatus</span>' : "";
+        html += `<tr>
+          <td class="pos">${r.position}</td>
+          <td><span class="name">${esc(r.name)}</span> <span class="lvl">${esc(r.level || "")}</span>${tag}</td>
+          <td class="rec">${r.wins}–${r.losses}</td>
+          <td class="mv ${mvCls}">${mvTxt}</td>
+        </tr>`;
+      }
+      html += "</tbody></table>";
+      el.innerHTML = html;
+    } catch (e) {
+      el.innerHTML = '<p class="standings-empty">Standings unavailable right now — try again in a minute.</p>';
+    }
+  }
+  loadStandings();
+  setInterval(loadStandings, 5 * 60 * 1000); // refresh every 5 minutes
+</script>
+
+</body>
+</html>
