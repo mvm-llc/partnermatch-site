@@ -124,6 +124,15 @@
     font-family: 'SF Mono', Menlo, monospace; font-size: 0.9em; color: #ff0050;
     background: #fff; padding: 1px 6px; border-radius: 3px;
   }
+  .join-path { padding: clamp(14px, 2.5vh, 18px) 0; border-top: 1px solid #e6e6e6; }
+  .join-path:first-of-type { border-top: none; padding-top: 4px; }
+  .join-path .path-label {
+    font-size: clamp(10px, 2.4vw, 12px); text-transform: uppercase; letter-spacing: 0.08em;
+    color: #00aa00; margin-bottom: 6px;
+  }
+  .join-path .cta { display: block; text-align: center; margin-top: 10px; width: 100%; }
+  .cta-dark { background: #000; color: #fff; }
+  .cta-dark:hover { box-shadow: 0 4px 20px rgba(0,0,0,.25); }
   .cta-section { text-align: center; margin: clamp(16px, 2.5vh, 22px) 0 0; }
   .cta {
     display: inline-block; padding: clamp(12px, 2.5vh, 16px) clamp(28px, 8vw, 48px);
@@ -174,6 +183,7 @@
   .foot .ig { color: #aaa; margin-left: 1em; transition: color .15s ease; }
   .foot .ig:hover { color: #666; }
 </style>
+<script async src="https://tally.so/widgets/embed.js"></script>
 </head>
 <body>
 
@@ -218,10 +228,17 @@
     <!-- ── JOIN ── -->
     <div class="join-box">
       <h2>Get on the ladder</h2>
-      <p><strong>Already in PARTNER MATCH?</strong> Open Slack, type <code>/ladder join</code>. You'll start at the bottom. Anyone, any level, any time in the season.</p>
-      <p><strong>Not a member yet?</strong> Join the community first — it's free — then <code>/ladder join</code>.</p>
-      <div class="cta-section">
-        <a href="/" class="cta" onclick="gtag('event', 'cta_click', { event_category: 'engagement', event_label: 'ladder_join' })">Join PARTNER MATCH</a>
+
+      <div class="join-path">
+        <p class="path-label">Already a member</p>
+        <p>Open Slack, type <code>/ladder join</code>. You start at the bottom. Anyone, any level, any time in the season.</p>
+        <a href="https://partnermatch.slack.com/" class="cta cta-dark" onclick="gtag('event', 'cta_click', { event_category: 'engagement', event_label: 'ladder_open_slack' })">Open Slack → /ladder join</a>
+      </div>
+
+      <div class="join-path">
+        <p class="path-label">Not a member yet</p>
+        <p>Join the community first — it's free — then <code>/ladder join</code>.</p>
+        <button data-tally-open="xX9M2d" data-tally-width="700" data-tally-hide-title="1" data-tally-overlay="1" data-tally-emoji-text="👋" data-tally-emoji-animation="wave" class="cta" onclick="gtag('event', 'cta_click', { event_category: 'engagement', event_label: 'ladder_founding_member' })">Join PARTNER MATCH</button>
       </div>
     </div>
 
